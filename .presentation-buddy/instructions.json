@@ -1,38 +1,147 @@
 [
   {
+    "type": "openFile",
+    "path": "src/before.js"
+  },
+  {
+    "type": "goto",
+    "line": 1
+  },
+  {
+    "type": "command",
+    "command": "cursorDownSelect",
+    "repeat": 9
+  },
+  {
+    "type": "command",
+    "command": "editor.action.clipboardCopyAction"
+  },
+  {
     "type": "createFile",
     "path": "src/demo.js"
   },
   {
-    "type": "typeText",
-    "text": [
-      "// This code is typed by Presentation Buddy",
-      "",
-      "class Calculator {",
-      "  add(x, y) {",
-      "    return x + y;",
-      "  }",
-      "}"
-    ]
+    "type": "goto",
+    "line": 1
   },
   {
-    "type": "goto",
-    "line": 4,
-    "column": 1
+    "type": "typeText",
+    "text": ["import { from } from 'rxjs';", "", ""]
+  },
+  {
+    "type": "command",
+    "command": "editor.action.clipboardPasteAction"
+  },
+  {
+    "type": "typeText",
+    "text": [
+      "from(numbers).subscribe(",
+      "  evenNumbers => (result.textContent = JSON.stringify(evenNumbers))",
+      ");"
+    ]
   },
   {
     "type": "command",
     "command": "workbench.action.files.save"
   },
   {
+    "skip": true,
+    "type": "wait",
+    "delay": "manual"
+  },
+  {
+    "type": "goto",
+    "line": 2
+  },
+  {
+    "type": "typeText",
+    "text": ["import { filter, map, scan } from 'rxjs/operators';", ""]
+  },
+  {
+    "type": "goto",
+    "line": 13,
+    "column": 14
+  },
+  {
+    "type": "typeText",
+    "text": [
+      ".pipe(filter(n => n % 2 === 0),map(n => ({ n })),scan((previous, current) => [...previous, current], []))"
+    ]
+  },
+  {
+    "type": "command",
+    "command": "workbench.action.files.save"
+  },
+  {
+    "skip": true,
+    "type": "wait",
+    "delay": "manual"
+  },
+  {
+    "type": "goto",
+    "line": 1,
+    "column": 14
+  },
+  {
+    "type": "typeText",
+    "text": [", fromEvent"]
+  },
+  {
+    "type": "goto",
+    "line": 2,
+    "column": 27
+  },
+  {
+    "type": "typeText",
+    "text": [", switchMap"]
+  },
+
+  {
+    "type": "goto",
+    "line": 12
+  },
+  {
+    "type": "typeText",
+    "text": [
+      "",
+      "const numbersClicks$ = fromEvent(mapNumbers, 'click');",
+      "",
+      "numbersClicks$",
+      "  .pipe(",
+      "    switchMap(() => "
+    ]
+  },
+  {
+    "type": "goto",
+    "line": 23,
+    "column": 4
+  },
+  {
+    "type": "typeText",
+    "text": ["))"]
+  },
+  {
+    "type": "command",
+    "command": "workbench.action.files.save"
+  },
+  {
+    "skip": true,
+    "type": "wait",
+    "delay": "manual"
+  },
+
+  {
+    "skip": true,
     "type": "command",
     "command": "workbench.action.closeActiveEditor"
   },
   {
+    "skip": true,
     "type": "createFile",
     "path": "src/demo.js"
   },
   {
+    "skip": true,
     "type": "typeText",
     "text": [
       "// This code is typed by Presentation Buddy",
@@ -45,14 +154,17 @@
     ]
   },
   {
+    "skip": true,
     "type": "openFile",
     "path": "src/calculator.js"
   },
   {
+    "skip": true,
     "type": "command",
     "command": "cursorBottom"
   },
   {
+    "skip": true,
     "type": "typeText",
     "text": ["", "module.exports = Calculator;"]
   }
