@@ -170,6 +170,43 @@
   },
 
   {
+    "type": "goto",
+    "line": 2,
+    "column": 99
+  },
+  {
+    "type": "typeText",
+    "text": ["", "import { ajax } from 'rxjs/ajax';"]
+  },
+  {
+    "type": "goto",
+    "line": 36
+  },
+  {
+    "type": "typeText",
+    "text": [
+      "",
+      "fromEvent(loadJokes, 'click')",
+      "  .pipe(",
+      "    switchMap(() => ajax.getJSON(jokesUrl)),",
+      "    map(rsp => rsp.value)",
+      "  )",
+      "  .subscribe(value => (result.textContent = JSON.stringify(value)));",
+      ""
+    ]
+  },
+  {
+    "type": "command",
+    "command": "workbench.action.files.save"
+  },
+
+  {
+    "skip": true,
+    "type": "wait",
+    "delay": "manual"
+  },
+
+  {
     "skip": true,
     "type": "wait",
     "delay": "manual"
