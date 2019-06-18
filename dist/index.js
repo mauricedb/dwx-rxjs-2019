@@ -117,47 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"before.js":[function(require,module,exports) {
-var mapNumbers = document.getElementById("mapNumbers");
-var startTimer = document.getElementById("startTimer");
-var loadJokes = document.getElementById("loadJokes");
-var result = document.getElementById("result");
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var jokesUrl = "http://api.icndb.com/jokes/random/10/?limitTo=[nerdy]&escape=javascript";
-mapNumbers.addEventListener("click", function () {
-  var evenNumbers = numbers.filter(function (n) {
-    return n % 2 === 0;
-  }).map(function (n) {
-    return {
-      n: n
-    };
-  });
-  result.textContent = JSON.stringify(evenNumbers);
-});
-startTimer.addEventListener("click", function () {
-  var values = [];
-  var n = -1;
-  handle = setInterval(function () {
-    n += 1;
+})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-    if (n % 2 === 0) {
-      values.push({
-        n: n
-      });
-      result.textContent = JSON.stringify(values);
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
     }
-  }, 1000);
-});
-loadJokes.addEventListener("click", function () {
-  fetch(jokesUrl).then(function (rsp) {
-    return rsp.json();
-  }).then(function (data) {
-    return data.value;
-  }).then(function (jokes) {
-    result.textContent = JSON.stringify(jokes);
-  });
-});
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -360,5 +387,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","before.js"], null)
-//# sourceMappingURL=/before.9dfd84de.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map
