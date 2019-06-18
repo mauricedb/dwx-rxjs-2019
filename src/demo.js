@@ -1,4 +1,4 @@
-import { from, fromEvent } from "rxjs";
+import { from, fromEvent, interval } from "rxjs";
 import { filter, map, scan, switchMap } from "rxjs/operators";
 
 const mapNumbers = document.getElementById("mapNumbers");
@@ -23,3 +23,12 @@ numbersClicks$
     )
   )
   .subscribe(evenNumbers => (result.textContent = JSON.stringify(evenNumbers)));
+
+fromEvent(startTimer, "click")
+  .pipe(
+    switchMap(() => interval(1000)),
+    filter(n => n % 2 === 0),
+    map(n => ({ n })),
+    scan((previous, current) => [...previous, current], [])
+  )
+  .subscribe(value => (result.textContent = JSON.stringify(value)));

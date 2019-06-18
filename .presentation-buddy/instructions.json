@@ -124,6 +124,51 @@
     "type": "command",
     "command": "workbench.action.files.save"
   },
+
+  {
+    "skip": true,
+    "type": "wait",
+    "delay": "manual"
+  },
+  {
+    "type": "goto",
+    "line": 1,
+    "column": 25
+  },
+  {
+    "type": "typeText",
+    "text": [", interval"]
+  },
+  {
+    "type": "goto",
+    "line": 26
+  },
+  {
+    "type": "typeText",
+    "text": [
+      "",
+      "fromEvent(startTimer, 'click')",
+      "  .pipe(",
+      "    switchMap(() => interval(1000)),",
+      "    filter(n => n % 2 === 0),",
+      "    map(n => ({ n })),",
+      "    scan((previous, current) => [...previous, current], [])",
+      "  )",
+      "  .subscribe(value => (result.textContent = JSON.stringify(value)));",
+      ""
+    ]
+  },
+  {
+    "type": "command",
+    "command": "workbench.action.files.save"
+  },
+
+  {
+    "skip": true,
+    "type": "wait",
+    "delay": "manual"
+  },
+
   {
     "skip": true,
     "type": "wait",

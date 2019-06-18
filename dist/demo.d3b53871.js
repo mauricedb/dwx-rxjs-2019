@@ -15055,6 +15055,19 @@ numbersClicks$.pipe((0, _operators.switchMap)(function () {
 })).subscribe(function (evenNumbers) {
   return result.textContent = JSON.stringify(evenNumbers);
 });
+(0, _rxjs.fromEvent)(startTimer, "click").pipe((0, _operators.switchMap)(function () {
+  return (0, _rxjs.interval)(1000);
+}), (0, _operators.filter)(function (n) {
+  return n % 2 === 0;
+}), (0, _operators.map)(function (n) {
+  return {
+    n: n
+  };
+}), (0, _operators.scan)(function (previous, current) {
+  return [].concat(_toConsumableArray(previous), [current]);
+}, [])).subscribe(function (value) {
+  return result.textContent = JSON.stringify(value);
+});
 },{"rxjs":"../node_modules/rxjs/_esm5/index.js","rxjs/operators":"../node_modules/rxjs/_esm5/operators/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
