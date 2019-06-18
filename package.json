@@ -1,0 +1,24 @@
+{
+  "name": "dwx-rxjs-2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./src/index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauricedb/dwx-rxjs-2019.git"
+  },
+  "author": "Maurice de Beijer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mauricedb/dwx-rxjs-2019/issues"
+  },
+  "homepage": "https://github.com/mauricedb/dwx-rxjs-2019#readme",
+  "dependencies": {
+    "parcel-bundler": "1.12.3",
+    "rxjs": "6.5.2"
+  }
+}
