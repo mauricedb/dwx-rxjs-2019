@@ -1,5 +1,5 @@
 import { from, fromEvent, interval } from 'rxjs';
-import { filter, map, scan, switchMap } from 'rxjs/operators';
+import { filter, map, scan, switchMap, take } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
 const mapNumbers = document.getElementById('mapNumbers');
@@ -36,7 +36,12 @@ fromEvent(startTimer, 'click')
 
 fromEvent(loadJokes, 'click')
   .pipe(
+    take(3),
     switchMap(() => ajax.getJSON(jokesUrl)),
     map(rsp => rsp.value)
   )
-  .subscribe(value => (result.textContent = JSON.stringify(value)));
+  .subscribe({
+    next: value => (result.textContent = JSON.stringify(value)),
+    error: err => (result.textContent = err.message),
+    complete: () => (result.textContent = 'completed')
+  });

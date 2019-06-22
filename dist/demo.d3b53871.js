@@ -15680,12 +15680,20 @@ numbersClicks$.pipe((0, _operators.switchMap)(function () {
 }, [])).subscribe(function (value) {
   return result.textContent = JSON.stringify(value);
 });
-(0, _rxjs.fromEvent)(loadJokes, 'click').pipe((0, _operators.switchMap)(function () {
+(0, _rxjs.fromEvent)(loadJokes, 'click').pipe((0, _operators.take)(3), (0, _operators.switchMap)(function () {
   return _ajax.ajax.getJSON(jokesUrl);
 }), (0, _operators.map)(function (rsp) {
   return rsp.value;
-})).subscribe(function (value) {
-  return result.textContent = JSON.stringify(value);
+})).subscribe({
+  next: function next(value) {
+    return result.textContent = JSON.stringify(value);
+  },
+  error: function error(err) {
+    return result.textContent = err.message;
+  },
+  complete: function complete() {
+    return result.textContent = 'completed';
+  }
 });
 },{"rxjs":"../node_modules/rxjs/_esm5/index.js","rxjs/operators":"../node_modules/rxjs/_esm5/operators/index.js","rxjs/ajax":"../node_modules/rxjs/_esm5/ajax/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
