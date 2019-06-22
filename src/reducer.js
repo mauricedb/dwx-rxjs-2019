@@ -1,12 +1,12 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case 'INCREMENT':
       return { ...state, count: state.count + 1 };
 
-    case "DECREMENT":
+    case 'DECREMENT':
       return { ...state, count: state.count - 1 };
 
-    case "RENAME":
+    case 'RENAME':
       return { ...state, firstName: action.payload };
 
     default:

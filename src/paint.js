@@ -1,18 +1,18 @@
-import { fromEvent } from "rxjs";
-import { switchMap, map, pairwise, takeUntil } from "rxjs/operators";
+import { fromEvent } from 'rxjs';
+import { switchMap, map, pairwise, takeUntil } from 'rxjs/operators';
 
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById('canvas');
 
-const mouseDown$ = fromEvent(canvas, "mousedown");
-const mouseMove$ = fromEvent(canvas, "mousemove");
-const mouseUp$ = fromEvent(canvas, "mouseup");
+const mouseDown$ = fromEvent(canvas, 'mousedown');
+const mouseMove$ = fromEvent(canvas, 'mousemove');
+const mouseUp$ = fromEvent(canvas, 'mouseup');
 
 mouseDown$
   .pipe(
     switchMap(() =>
       mouseMove$.pipe(
         map(e => ({
-          ctx: e.target.getContext("2d"),
+          ctx: e.target.getContext('2d'),
           x: e.offsetX,
           y: e.offsetY
         })),

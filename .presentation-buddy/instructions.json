@@ -26,8 +26,15 @@
   },
   {
     "type": "typeText",
-    "text": ["import { from } from 'rxjs';", "", ""]
+    "text": [
+      "import { from, fromEvent, interval } from 'rxjs';",
+      "import { filter, map, scan, switchMap } from 'rxjs/operators';",
+      "import { ajax } from 'rxjs/ajax';",
+      "",
+      ""
+    ]
   },
+
   {
     "type": "command",
     "command": "editor.action.clipboardPasteAction"
@@ -36,7 +43,7 @@
     "type": "typeText",
     "text": [
       "from(numbers).subscribe(",
-      "  evenNumbers => (result.textContent = JSON.stringify(evenNumbers))",
+      "  value => (result.textContent = JSON.stringify(value))",
       ");"
     ]
   },
@@ -45,21 +52,13 @@
     "command": "workbench.action.files.save"
   },
   {
-    "skip": true,
+    "skip": false,
     "type": "wait",
     "delay": "manual"
   },
   {
     "type": "goto",
-    "line": 2
-  },
-  {
-    "type": "typeText",
-    "text": ["import { filter, map, scan } from 'rxjs/operators';", ""]
-  },
-  {
-    "type": "goto",
-    "line": 13,
+    "line": 14,
     "column": 14
   },
   {
@@ -73,32 +72,13 @@
     "command": "workbench.action.files.save"
   },
   {
-    "skip": true,
+    "skip": false,
     "type": "wait",
     "delay": "manual"
   },
   {
     "type": "goto",
-    "line": 1,
-    "column": 14
-  },
-  {
-    "type": "typeText",
-    "text": [", fromEvent"]
-  },
-  {
-    "type": "goto",
-    "line": 2,
-    "column": 27
-  },
-  {
-    "type": "typeText",
-    "text": [", switchMap"]
-  },
-
-  {
-    "type": "goto",
-    "line": 12
+    "line": 13
   },
   {
     "type": "typeText",
@@ -113,7 +93,7 @@
   },
   {
     "type": "goto",
-    "line": 23,
+    "line": 24,
     "column": 4
   },
   {
@@ -126,22 +106,13 @@
   },
 
   {
-    "skip": true,
+    "skip": false,
     "type": "wait",
     "delay": "manual"
   },
   {
     "type": "goto",
-    "line": 1,
-    "column": 25
-  },
-  {
-    "type": "typeText",
-    "text": [", interval"]
-  },
-  {
-    "type": "goto",
-    "line": 26
+    "line": 27
   },
   {
     "type": "typeText",
@@ -164,23 +135,14 @@
   },
 
   {
-    "skip": true,
+    "skip": false,
     "type": "wait",
     "delay": "manual"
   },
 
   {
     "type": "goto",
-    "line": 2,
-    "column": 99
-  },
-  {
-    "type": "typeText",
-    "text": ["", "import { ajax } from 'rxjs/ajax';"]
-  },
-  {
-    "type": "goto",
-    "line": 36
+    "line": 37
   },
   {
     "type": "typeText",
@@ -198,56 +160,5 @@
   {
     "type": "command",
     "command": "workbench.action.files.save"
-  },
-
-  {
-    "skip": true,
-    "type": "wait",
-    "delay": "manual"
-  },
-
-  {
-    "skip": true,
-    "type": "wait",
-    "delay": "manual"
-  },
-
-  {
-    "skip": true,
-    "type": "command",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  {
-    "skip": true,
-    "type": "createFile",
-    "path": "src/demo.js"
-  },
-  {
-    "skip": true,
-    "type": "typeText",
-    "text": [
-      "// This code is typed by Presentation Buddy",
-      "",
-      "const Calculator = require('./calculator');",
-      "",
-      "const calc = new Calculator();",
-      "const sum = calc.add(1, 2)",
-      "console.log(`The sum of 1 + 2 = ${sum}`);"
-    ]
-  },
-  {
-    "skip": true,
-    "type": "openFile",
-    "path": "src/calculator.js"
-  },
-  {
-    "skip": true,
-    "type": "command",
-    "command": "cursorBottom"
-  },
-  {
-    "skip": true,
-    "type": "typeText",
-    "text": ["", "module.exports = Calculator;"]
   }
 ]
