@@ -118,13 +118,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"before.js":[function(require,module,exports) {
-var mapNumbers = document.getElementById("mapNumbers");
-var startTimer = document.getElementById("startTimer");
-var loadJokes = document.getElementById("loadJokes");
-var result = document.getElementById("result");
+var mapNumbers = document.getElementById('mapNumbers');
+var startTimer = document.getElementById('startTimer');
+var loadJokes = document.getElementById('loadJokes');
+var result = document.getElementById('result');
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var jokesUrl = "http://api.icndb.com/jokes/random/10/?limitTo=[nerdy]&escape=javascript";
-mapNumbers.addEventListener("click", function () {
+var jokesUrl = 'http://api.icndb.com/jokes/random/10/?limitTo=[nerdy]&escape=javascript';
+mapNumbers.addEventListener('click', function () {
   var evenNumbers = numbers.filter(function (n) {
     return n % 2 === 0;
   }).map(function (n) {
@@ -134,10 +134,10 @@ mapNumbers.addEventListener("click", function () {
   });
   result.textContent = JSON.stringify(evenNumbers);
 });
-startTimer.addEventListener("click", function () {
+startTimer.addEventListener('click', function () {
   var values = [];
   var n = -1;
-  handle = setInterval(function () {
+  setInterval(function () {
     n += 1;
 
     if (n % 2 === 0) {
@@ -148,7 +148,7 @@ startTimer.addEventListener("click", function () {
     }
   }, 1000);
 });
-loadJokes.addEventListener("click", function () {
+loadJokes.addEventListener('click', function () {
   fetch(jokesUrl).then(function (rsp) {
     return rsp.json();
   }).then(function (data) {
@@ -185,7 +185,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52588" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54769" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

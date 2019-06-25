@@ -120,10 +120,13 @@
       "",
       "fromEvent(startTimer, 'click')",
       "  .pipe(",
-      "    switchMap(() => interval(1000)),",
-      "    filter(n => n % 2 === 0),",
-      "    map(n => ({ n })),",
-      "    scan((previous, current) => [...previous, current], [])",
+      "    switchMap(() => interval(1000)",
+      "      .pipe(",
+      "        filter(n => n % 2 === 0),",
+      "        map(n => ({ n })),",
+      "        scan((previous, current) => [...previous, current], [])",
+      "      )",
+      "    )",
       "  )",
       "  .subscribe(value => (result.textContent = JSON.stringify(value)));",
       ""
@@ -142,7 +145,7 @@
 
   {
     "type": "goto",
-    "line": 37
+    "line": 39
   },
   {
     "type": "typeText",
@@ -170,7 +173,7 @@
 
   {
     "type": "goto",
-    "line": 42,
+    "line": 45,
     "column": 14
   },
   {
@@ -179,7 +182,7 @@
   },
   {
     "type": "goto",
-    "line": 42,
+    "line": 45,
     "column": 74
   },
   {

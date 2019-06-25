@@ -16,7 +16,7 @@ mapNumbers.addEventListener('click', () => {
 startTimer.addEventListener('click', () => {
   const values = [];
   let n = -1;
-  handle = setInterval(() => {
+  setInterval(() => {
     n += 1;
     if (n % 2 === 0) {
       values.push({ n });
